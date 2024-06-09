@@ -5,22 +5,16 @@ function SelectAllMenus() {
     const [menus, setMenus] = useState([]);
 
     const call = async () => {
-        console.log('hi');
         const url = 'http://localhost:8080/menus';
-        console.log(url);
-        const res = await fetch(url, {
+        const response = await fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
             },
-        });
-        const result = await res.json();
-        const result2 = await result.menus;
-        console.log(typeof result2);
-        console.log(result2);
-        // console.log(result.menus);
-        // console.log(result.menus[0]);
-        return result2;
+        })
+            .then(res => res.json());
+        const result = response.menus;
+        return result;
     };
 
     useEffect(() => {
@@ -31,9 +25,12 @@ function SelectAllMenus() {
         <div>
             <h3>select all menus</h3>
             {menus.map(menu => (
-                <p>hi</p>
-            )
-            )}
+                <div key={menu.menuCode}>
+                    <p>{menu.menuName}</p>
+                    <p>{menu.menuPrice}</p>
+                    <hr></hr>
+                </div>
+            ))}
         </div>
     );
 }
