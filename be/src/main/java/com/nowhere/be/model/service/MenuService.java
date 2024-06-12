@@ -20,4 +20,24 @@ public class MenuService {
     public List<MenuDTO> selectAllMenus() {
         return menuMapper.selectAllMenus();
     }
+
+    public MenuDTO selectMenuByCode(int menuCode) {
+        return menuMapper.selectMenuByCode(menuCode);
+    }
+
+    public int getLastMenuCode() {
+        return menuMapper.getLastMenuCode();
+    }
+
+    public void insertMenu(MenuDTO menu) {
+        menuMapper.insertMenu(menu);
+    }
+
+    public void updateMenu(MenuDTO menu) {
+        menuMapper.updateMenu(menu);
+    }
+
+    public void deleteMenu(int menuCode) {
+        menuMapper.deleteMenu(menuCode);
+    }
 }

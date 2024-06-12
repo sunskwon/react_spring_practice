@@ -1,2 +1,32 @@
 ### selectAllMenus
 GET http://localhost:8080/menus
+
+### selectMenuByCode
+GET http://localhost:8080/menus/3
+
+### insertMenu
+POST http://localhost:8080/menus
+Content-Type: application/json
+
+{
+  "menuCode": 0,
+  "menuName": "test",
+  "menuPrice": 1000,
+  "categoryCode": 4,
+  "orderableStatus": "Y"
+}
+
+### updateMenu
+PUT http://localhost:8080/menus
+Content-Type: application/json
+
+{
+  "menuCode": 22,
+  "menuName": "test",
+  "menuPrice": 2000,
+  "categoryCode": 5,
+  "orderableStatus": "N"
+}
+
+### deleteMenu
+DELETE http://localhost:8080/menus/22
