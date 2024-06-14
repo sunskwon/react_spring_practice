@@ -106,4 +106,16 @@ public class MenuController {
 
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/menus/search")
+    public ResponseEntity<?> searchMenu(@RequestParam("name") String[] name, @RequestParam("second") String second) {
+
+//        System.out.println("name = " + name);
+        for (String item: name) {
+            System.out.println("item = " + item);
+        }
+        System.out.println("second = " + second);
+
+        return null;
+    }
 }

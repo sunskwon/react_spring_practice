@@ -30,3 +30,6 @@ Content-Type: application/json
 
 ### deleteMenu
 DELETE http://localhost:8080/menus/22
+
+### requestParam
+GET http://localhost:8080/menus/search?name=test,test2&second=hi
