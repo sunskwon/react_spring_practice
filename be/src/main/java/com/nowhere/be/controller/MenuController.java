@@ -72,10 +72,14 @@ public class MenuController {
 
         System.out.println("insert menu");
 
+//        return ResponseEntity
+//                .status(HttpStatus.CREATED)
+//                .headers(headers)
+//                .body(newMenuCode);
+
         return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .headers(headers)
-                .body(newMenuCode);
+                .created(URI.create("/menus/" + newMenuCode))
+                .build();
     }
 
     @PutMapping("/menus")
@@ -91,10 +95,14 @@ public class MenuController {
 
         System.out.println("update menu");
 
+//        return ResponseEntity
+//                .status(HttpStatus.ACCEPTED)
+//                .headers(headers)
+//                .body(menu.getMenuCode());
+
         return ResponseEntity
-                .status(HttpStatus.ACCEPTED)
-                .headers(headers)
-                .body(menu.getMenuCode());
+                .created(URI.create("/menus/" + menu.getMenuCode()))
+                .build();
     }
 
     @DeleteMapping("/menus/{menuCode}")
@@ -108,14 +116,17 @@ public class MenuController {
     }
 
     @GetMapping("/menus/search")
-    public ResponseEntity<?> searchMenu(@RequestParam("name") String[] name, @RequestParam("second") String second) {
+    public ResponseEntity<?> searchMenu(@RequestParam("type") String type, @RequestParam("name") String name) {
 
-//        System.out.println("name = " + name);
-        for (String item: name) {
-            System.out.println("item = " + item);
-        }
-        System.out.println("second = " + second);
+        HttpHeaders headers = new HttpHeaders();
 
-        return null;
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("menus", menuService.searchMenu(type, name));
+
+        System.out.println("search menu");
+
+        return new ResponseEntity<>(result, headers, HttpStatus.OK);
     }
 }

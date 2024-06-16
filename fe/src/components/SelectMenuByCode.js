@@ -47,14 +47,12 @@ function SelectMenuByCode({ menuCode }) {
                 <p>{menu?.orderableStatus}</p>
             </div>
             <div
-                onClick={() => {
-                    navigate("/update", { state: { menu: menu } });
-                }}
+                onClick={() => { navigate("/update", { state: { menu: menu } }); }}
                 style={{ width: "50px", height: "25px", backgroundColor: "black", color: "white" }}
             >
                 update
             </div>
-            <br/>
+            <br />
             <div
                 onClick={deleteHandler}
                 style={{ width: "45px", height: "25px", backgroundColor: "black", color: "white" }}

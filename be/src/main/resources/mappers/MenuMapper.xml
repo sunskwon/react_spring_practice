@@ -67,4 +67,18 @@
         DELETE FROM TBL_MENU
         WHERE MENU_CODE = #{ menuCode }
     </delete>
+
+    <select id="searchMenu" resultMap="menuResultMap">
+        SELECT
+        MENU_CODE
+        , MENU_NAME
+        , MENU_PRICE
+        , CATEGORY_CODE
+        , ORDERABLE_STATUS
+        FROM TBL_MENU
+        <if test="type == 'menuName'">
+            WHERE MENU_NAME LIKE CONCAT('%', #{ name }, '%')
+        </if>
+        ORDER BY MENU_CODE
+    </select>
 </mapper>

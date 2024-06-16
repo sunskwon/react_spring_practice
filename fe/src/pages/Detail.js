@@ -1,4 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
+
 import SelectMenuByCode from "../components/SelectMenuByCode";
 
 function Detail() {
@@ -12,12 +13,10 @@ function Detail() {
             <SelectMenuByCode
                 menuCode={state.menuCode}
             />
-            <br/>
+            <br />
             <div
-                onClick={() => {
-                    navigate("/main");
-                }}
-                style={{ width: "40px", height: "25px", backgroundColor: "black", color: "white" }}
+                onClick={() => { navigate("/main"); }}
+                style={{ width: "45px", height: "25px", backgroundColor: "black", color: "white" }}
             >
                 return
             </div>

@@ -18,4 +18,6 @@ public interface MenuMapper {
     void updateMenu(MenuDTO menu);
 
     void deleteMenu(int menuCode);
+
+    List<MenuDTO> searchMenu(String type, String name);
 }

@@ -40,4 +40,8 @@ public class MenuService {
     public void deleteMenu(int menuCode) {
         menuMapper.deleteMenu(menuCode);
     }
+
+    public List<MenuDTO> searchMenu(String type, String name) {
+        return menuMapper.searchMenu(type, name);
+    }
 }

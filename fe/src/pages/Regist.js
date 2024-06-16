@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+
 import InsertMenu from "../components/InsertMenu";
 
 function Regist() {
@@ -9,11 +10,9 @@ function Regist() {
         <div>
             <h1>regist page</h1>
             <InsertMenu />
-            <br/>
+            <br />
             <div
-                onClick={() => {
-                    navigate("/main");
-                }}
+                onClick={() => { navigate("/main"); }}
                 style={{ width: "45px", height: "25px", backgroundColor: "black", color: "white", }}
             >
                 return

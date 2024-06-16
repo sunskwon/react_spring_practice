@@ -25,13 +25,14 @@ function InsertMenu() {
         const response = await fetch(url, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': '*/*',
             },
             body: JSON.stringify(menu)
-        })
-        .then(res => res.json());
+        });
+        // .then(res => res.json());
 
-        navigate("/detail", { state: { menuCode: response } })
+        navigate("/detail", { state: { menuCode: response.headers.get('Location').split('/')[2] } })
     };
 
     return (

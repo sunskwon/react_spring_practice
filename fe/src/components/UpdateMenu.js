@@ -25,13 +25,14 @@ function UpdateMenu({ menu }) {
         const response = await fetch(url, {
             method: "PUT",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': '*/*'
             },
             body: JSON.stringify(updateMenu),
-        })
-        .then(res => res.json());
+        });
+        // .then(res => res.json());
 
-        navigate("/detail", {state: {menuCode: response}});
+        navigate("/detail", { state: { menuCode: response.headers.get('Location').split('/')[2] } });
     };
 
     return (
@@ -57,18 +58,25 @@ function UpdateMenu({ menu }) {
             <select
                 name="categoryCode"
                 onChange={valueChangeHandler}
+                defaultValue={menu.categoryCode}
             >
-                <option value={4} selected={menu.categoryCode == 4 ? true : false}>4</option>
-                <option value={5} selected={menu.categoryCode == 5 ? true : false}>5</option>
-                <option value={6} selected={menu.categoryCode == 6 ? true : false}>6</option>
+                {/* <option value={4} selected={menu.categoryCode === 4 ? true : false}>4</option> */}
+                <option value={4}>4</option>
+                {/* <option value={5} selected={menu.categoryCode === 5 ? true : false}>5</option> */}
+                <option value={5}>5</option>
+                {/* <option value={6} selected={menu.categoryCode === 6 ? true : false}>6</option> */}
+                <option value={6}>6</option>
             </select>
             <p>orderable status</p>
             <select
                 name="orderableStatus"
                 onChange={valueChangeHandler}
+                defaultValue={menu.orderableStatus}
             >
-                <option value={"Y"} selected={menu.orderableStatus == "Y" ? true : false}>Y</option>
-                <option value={"N"} selected={menu.orderableStatus == "N" ? true : false}>N</option>
+                {/* <option value={"Y"} selected={menu.orderableStatus === "Y" ? true : false}>Y</option> */}
+                <option value={"Y"}>Y</option>
+                {/* <option value={"N"} selected={menu.orderableStatus === "N" ? true : false}>N</option> */}
+                <option value={"N"}>N</option>
             </select>
             <br /><br />
             <div
